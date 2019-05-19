@@ -1,23 +1,48 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https:/ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<!--<link rel="stylesheet" href="https:/www.w3schools.com/w3css/4/w3.css">-->
+	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https:/fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
 	<title>Safar</title>
 	<style>					
 		body{
 			position:relative;
-			font-family:'Nunito Semibold','Lato',sans-serif;
+			font-family: 'Oswald', sans-serif;
+			font-size: 16px;
+			letter-spacing:.75px;
 			text-align: center;
 			font-weight: 400;
-			background:#edf1f4
+			background:#edf1f4;
 			color: #333;
 		}
 		
+		.stop-scrolling {
+			height: 100%;
+			overflow: hidden;
+		}
 		
+		.headerRibbon{
+			background:#edf1f4;
+			padding-bottom:15px;
+			width:100%;
+			opacity:0.96;
+		}
+		#search_icon{
+			position:absolute;
+			right:5px;
+			top:120px;
+		}
 		
-		
+		.hoverCursor:hover
+		{
+			cursor:pointer;
+			color:white;
+			background:#3bbced;
+			height:70px;
+			padding-top:15px;
+		}
 		#container{
 			display: grid;
 			grid-template-columns: repeat(4,1fr);
@@ -45,21 +70,16 @@
 			position:relative;
 		}
 		
-		div#bottombox{
-			
-			width:100%;
-			min-width:200px;				
-			position: fixed;
-			background-color:grey;
-			bottom: 0rem;
-			font-size:20px;
-			max-height:300px;
-			z-index:10;
-		}
-		
 		footer{
 			grid-area:footer;
-			margin-bottom:47px;
+			margin-bottom:-40px;
+			padding-bottom:50px;
+			background:black;
+			color:#9b9b9b;
+			text-size:14px;
+		}
+		footer h3{
+			color:white;
 		}
 		
 		.headerRibbon div#logo{
@@ -72,7 +92,6 @@
 		.headerRibbon div#myplans{
 			display:none;
 		}
-		
 		#nav{
 			list-style:none;
 			text-align:justify;
@@ -86,28 +105,29 @@
 		
 		
 		#header_container{
-			width:100%;
-			height:100%;
+			
 			display:grid;
 			grid-template-columns:repeat(12,1fr);
 			grid-template-rows: repeat(12,1fr);
+			width:100%;
+			height:100%;
 			grid-gap:10px;
-			margin:0 auto;
+			margin:auto;
 			
-		}
-		#header_container > *{
-			background:#3bbced;
+			
 		}
 		#header_side{
 			grid-row:2/11;
 			grid-column:2/12;
+			color:white;
+			margin:auto 5px;
+			background:rgb(0,0,0,.7);
 		}
 		#header_plan{
 			grid-row:11/12;
 			grid-column:5/9;
-		}
-		#head_plan > *{
-			background:green;
+			
+			background:#3bbced;
 		}
 		#small_screen_plan_button{
 			display:block;
@@ -122,7 +142,18 @@
 		}
 		
 		
+		.how_to_step_img img{
+			width:84px;
+			height:84px;
+		}
 		
+		.how_to_step_desc h3{
+			color:orange;
+		}
+		.how_to_step_desc p{
+			text-align:center;
+			color:#3bbccd;
+		}
 		
 		
 		.modal {
@@ -178,8 +209,7 @@
 		
 		
 		
-		
-	@media screen and (min-width:760px){
+	@media screen and (min-width:775px){
 		.headerRibbon{
 			width:100%;
 			position:sticky;
@@ -187,6 +217,7 @@
 			max-height:70px;
 			background:rgb(9,f,f);
 			top:0;
+			padding-bottom:15px;
 			display:grid;
 			grid-template-columns : repeat(12,1fr);
 			grid-template-rows : repeat(7,1fr);
@@ -225,6 +256,12 @@
 			max-height:70px;
 			
 		}
+		#search_icon{
+			position:absolute;
+			top:20px;
+			right:17.8%;
+		}
+		
 		#container{
 			display: grid;
 			grid-template-columns: repeat(4,1fr);
@@ -248,6 +285,38 @@
 			margin: 0 auto;
 			position:relative;
 		}
+		
+		
+		#how_to_container{
+			width:100%;
+			height :320px;
+			display:grid;
+			grid-template-columns:repeat(5,1fr);
+			grid-auto-rows:minmax(100%,auto);
+			grid-gap:25px;
+			margin:auto;
+		}
+		#how_to_1{
+			grid-column:1/2;
+		}
+		#how_to_2{
+			grid-column:2/3;
+		}
+		#how_to_3{
+			grid-column:3/4;
+		}
+		#how_to_4{
+			grid-column:4/5;
+		}
+		#how_to_5{
+			grid-column:5/6;
+		}
+		#how_to_container div{
+			max-width : 140px;
+			min-width : 110px;
+		}
+		
+		
 		div#bottombox{
 			
 			width:400px;
@@ -258,12 +327,13 @@
 			bottom: 0rem;
 			right:3rem;
 			font-size:20px;
-			max-height:300px;
+			max-height:600px;
 		}
 		
 		footer{
 			grid-area:footer;
-			margin-bottom:0;
+			margin-bottom:-40px;
+			padding-bottom:50px;
 		}
 		
 		span#small_screen_nav_button{
@@ -274,24 +344,53 @@
 		}
 		
 		
+		
+		#header_container{
+			display:grid;
+			grid-template-columns:repeat(12,1fr);
+			grid-template-rows: repeat(12,1fr);
+			width:100%;
+			height:100%;
+			min-height:535px;
+			grid-gap:10px;
+			margin:auto;	
+		}
 		#header_container > *{
-			background:#3bbced;
 			grid-row:2/12;
 		}
 		#header_side{
 			grid-column:2/7;
+			color:white;
+			height:100%;
+			background:rgb(0,0,0,.7);
+		}
+		#header_side center{
+			margin : 150 10px;;
 		}
 		#header_plan{
+			
+			background:#3bbced;
 			grid-column:7/12;
 		}
 		#big_screen_planner{
 			display:block;
 			width:100%;
-			height:100%;
 		}
 		#small_screen_plan_button{
 			display:none;
 		}
+		
+		#main_container{
+		display:grid;
+		grid-template-columns:repeat(4,1fr);
+		grid-template-rows:repeat(4,1fr);
+		grid-template-areas:
+			"city_1 city_1 city_2 city_3"
+			"city_1 city_1 city_2 city_3"
+			"city_4 city_6 city_5 city_5"
+			"city_4 city_6 city_5 city_5";
+		grid-gap:5px;
+	}
 		
 		
 		
@@ -310,19 +409,19 @@
 	
 	
 	
-	
-	
-	
+	.main_content{
+		min-height:80px;
+	}		
 	
 	#container > *:not(header){
-		background: #3bbced;
+		//background: #3bbced;
 		padding: 30px; 
 		
 	}	
 	header{
 		grid-area:header; 
 		background: #3bbced;
-		background-image:url('https://gitcdn.link/repo/ShreyasDiddi/ShreyasDiddi.github.io/master/images/background.jpeg');
+		background-image:url('https:/gitcdn.link/repo/ShreyasDiddi/ShreyasDiddi.github.io/master/images/background.jpeg');
 		background-size:100% 100%;
 	}
 	main{
@@ -336,40 +435,101 @@
 	}
 
 	nav{
-		display:none
-	}
-	
-	
-	
-	
-	div.bb_container {
-		overflow:auto;
-	}
-	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	span.hidespan {
 		display:none;
 	}
 	
+	
+	#city_1{
+		grid-area:city_1;
+		background : url('https://www.thebetterindia.com/wp-content/uploads/2016/02/charminar.jpg') no-repeat center center; background-size: 100% 100%;;
+	
+	}
+	
+	#city_2{
+		grid-area:city_2;
+		background : url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAv9axEpu6YivRf_hXblAWRz03i-2YvpRebbW7-vc0mf7Hf4eiA') no-repeat center center; background-size: 100% 100%;;
+	}
+	
+	#city_3{
+		grid-area:city_3;
+		background : url('https://www.holidify.com/images/compressed/3169.jpg') no-repeat center center; background-size: 100% 100%;;
+	}
+	#city_4{
+		grid-area:city_4;
+		background : url('https://www.thebetterindia.com/wp-content/uploads/2018/03/28685983_10204173290409563_5667113599366070272_o.jpg') no-repeat center center; background-size: 100% 100%;;
+	}
+	
+	#city_5{
+		grid-area:city_5;
+		background : url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Kolkata_City_skyline_from_Hoogly_bridge.jpg/300px-Kolkata_City_skyline_from_Hoogly_bridge.jpg') no-repeat center center; background-size: 100% 100%;;
+	}
+	
+	#city_6{
+		grid-area:city_6;
+		background : url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Prestige_Shantiniketan_In_Whitefield_Main_Road.jpg/250px-Prestige_Shantiniketan_In_Whitefield_Main_Road.jpg') no-repeat center center; background-size: 100% 100%;;
+	}
+	
+	
+	
+	.city_name > span{
+		display:none;
+	}
+	
+	.city_name > h3{
+		margin :45px auto;
+		width:auto;
+		color:white;
+		font-size:32px;
+	}
+	
+	.main_content {
+		cursor:pointer;	
+	}
+	.main_content:hover{
+		background:green;
+	}
+	
+	.zoom{
+		transition: transform .2s;
+		filter: alpha(opacity=50); 
+	}
+	.zoom:hover {
+		transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		filter: alpha(opacity=100); 
+	}
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	div#bottombox{
+		width:100%;			
+		position: sticky;
+		float:right;
+		background-color:grey;
+		bottom: 0rem;
+		font-size:16px;
+		max-height:minmax(65%,auto);
+		z-index:10;
+	}
+	
+	
+	
+	
 	div.bb_content{
 		margin:30px auto;
-		min-height:100px;
+		min-height:300px;
+		display:none;
 	}
 	
 	div#bottombox div{
@@ -377,19 +537,26 @@
 	
 	}
 	div#bottombox .header{
-		background:black;
-		color:white;
+		pointer:absolute;
+		border :2px solid;
+		border-color:black;
+		background:#3bbccd;
+		color:black;
 		height: 45px;
 		line-space:5px;
-		padding-top:auto auto;
-		vertical-align:middle;
 	}
-	div#bottombox .header span{
+	#toggle{
 		position:absolute;
 		right:20px;
 		cursor:pointer;
+		top:15px;
+		bottom:15px;
 	}
-	
+	#bb_tp{
+		position:relative;
+		top:10px;
+		
+	}
 	
 	
 	
@@ -487,26 +654,48 @@
 	span#small_screen_nav_button{
 	
 		position:absolute;right:1rem;
-		
-		margin:30px auto;
+		margin:25px auto;
+		margin-left:2px;
+	}
+	
+	#header_side h1{
+		font-weight: 900;
+		line-height: 1.2;
+		letter-spacing: -1px;
+		text-shadow: 0 20px 30px rgba(0,0,0,0.35);
+		max-width: 400px;
+		height: auto;
+		display: block;
+		font-size: 3em;
+		margin-block-start: 0.67em;
+		margin-block-end: 0.67em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+		-webkit-font-smoothing: antialiased;
+	}
+	#header_side center p{ 
+		font-size:1.25em;
+	}
+	#main_container > div{
+		height:250px;
 	}
 	</style>
 </head>
 <body>
 	<div class='headerRibbon'>
 		<div id = "logo">
-			<img src="https://cdn.staticaly.com/gh/ShreyasDiddi/ShreyasDiddi.github.io/6a6ced4b/images/logo.svg" alt="Safar."id="img_logo"></img>
-			<span id = "small_screen_nav_button" onclick="$('#nav').toggle()"><i style="font-size:24px" class="fa">&#xf03a;</i></span>
+			<img src="https:/cdn.staticaly.com/gh/ShreyasDiddi/ShreyasDiddi.github.io/6a6ced4b/images/logo.svg" alt="Safar."id="img_logo"></img>
+			<span id = "small_screen_nav_button" onclick="$('#nav').toggle();$('#search_icon').toggle();"><i style="font-size:24px" class="fa">&#xf03a;</i></span>
 			<div id = "small_screen_nav">
 			<ul id="nav">
-				<li>My Plans</li>
+				<li >My Plans</li>
 				<li>Login</li>
 			</ul>
 			</div>
 		</div>
 		<div id = "searchbox">
-			<input type="text" id="myInput"  onkeyup="suggestSearch()" placeholder="Search for cities.." onfocus="$('#myUL').show()"  >
-
+			<input type="text" id="myInput"  onkeyup="suggestSearch()" placeholder="Search for cities.." onfocus="$('#myUL').show()"  padding-right="100px">
+			<svg id="search_icon"  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http:/www.w3.org/2000/svg" viewBox="0 0 512 512" class="o-15 absolute center-v right-1 pe-none svg-inline--fa fa-search fa-w-16 fa-fw fa-lg"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" class="" ></path></svg>
 			<ul id = "myUL"   >
 				<li>Adele	</li>
 				<li>Agnes		</li>
@@ -516,12 +705,12 @@
 				<li>Christina	</li>
 				<li>Cindy		</li>
 			</ul> 
+			
 		</div>
-		
-		<div id = "myplans" onClick="showModal($(this).html())">
+		<div id = "myplans" onClick="showModal($(this).html())" class="hoverCursor">
 			My Plans
 		</div>
-		<div id = "login">
+		<div id = "login" class="hoverCursor">
 			Log In
 		</div>
 		
@@ -532,24 +721,120 @@
 		<header>
 			<div id = "header_container">
 				<div id="header_side">
-			
+					<center>
+					<h1>PLAN YOUR ROUND TRIP!</h1>
+					<p>Get the best round trip route for cities of your choice & know your travel spots better.<br/>Find available trains for your Trip.</p>
+					</center>
 				</div>
 				<div id="header_plan">
 					<div id="big_screen_planner">
 					
 					</div>
 					<div id="small_screen_plan_button" onClick="toggleBottomBoxContent()">
-					<strong></string>Plan your Trip</strong>
+					<strong>Plan your Trip</strong>
 					</div>
 				</div>
 			</div>
 		</header>
-		<main>Main</main>
-		<section>Section
-			<div id="plans_made">
-			
+		<main><h3>Trending Cities</h3>
+			<div id = "main_container">
+				<div id = "city_1" class = "main_content zoom">
+					<div class = "city_name">
+						<span>1</span><h3>Hyderabad</h3>	
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
+				<div id = "city_2" class = "main_content zoom">
+					<div class = "city_name">
+						<span>2</span><h3>Mysore</h3>				
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
+				<div id = "city_3" class = "main_content zoom">
+					<div class = "city_name">
+						<span>3</span><h3>Chennai</h3>
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
+				<div id = "city_4" class = "main_content zoom">
+					<div class = "city_name">
+						<span>4</span><h3>Varanasi</h3>				
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
+				<div id = "city_5" class = "main_content zoom">
+					<div class = "city_name">
+						<span>5</span><h3>Kolkata</h3>
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
+				<div id = "city_6" class = "main_content zoom">
+					<div class = "city_name">
+						<span>6</span><h3>Banglore</h3>				
+					</div>
+					<div class = "add_to_plan">
+					
+					</div>
+				</div>
 			</div>
-			<div id = "how_to">
+		</main>
+		<section>
+			<div id = "how_to_container">
+				<div id="how_to_1">
+					<div class = "how_to_step_img">
+						<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/acba64b2/images/safar/Tourist/p01.png">
+					</div>
+					<div class = "how_to_step_desc">
+						<h3>Discover Cities </h3>
+						<p>Search for cities.<br>Know the cities' history , attractions ,climate ,eataries.</p>
+					</div>
+				</div>
+				<div id="how_to_2">
+					<div class = "how_to_step_img">
+						<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/acba64b2/images/safar/Journey/p06.png">
+					</div>
+					<div class = "how_to_step_desc">
+						<h3>Plan it.</h3>
+						<p>Add cities to your Travel Plan.We give you the best routes.</p>
+					</div>
+				</div>
+				<div id="how_to_3">
+					<div class = "how_to_step_img">
+						<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/acba64b2/images/safar/Date/p02.png">
+					</div>
+					<div class = "how_to_step_desc">
+						<h3>Schedule it.</h3>
+						<p>Refine, change your plan.We 'll find the best routes that match your plan and help you schedule your trip.</p>
+					</div>
+				</div>
+				<div id="how_to_4">
+					<div class = "how_to_step_img">
+						<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/acba64b2/images/safar/Train/p01.png">
+					</div>
+					<div class = "how_to_step_desc">
+						<h3>Book it.</h3>
+						<p>View available trains, <br/>book your tickets.</p>
+					</div>
+				</div>
+				<div id="how_to_5">
+					<div class = "how_to_step_img">
+						<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/acba64b2/images/safar/Bags/b02.png">
+					</div>
+					<div class = "how_to_step_desc">
+						<h3>Bon Voyage!</h3>
+						<p>Enjoy Your Trip <br> Your Way!</p>
+					</div>
+				</div>
 				
 			</div>
 		</section>
@@ -560,8 +845,7 @@
 	
 	
 	<div id = "bottombox">
-		<div class="header">
-		Trip Planner<span onClick="toggleBottomBoxContent()" id = "toggle">-</span>
+		<div class="header"><span id="bb_tp">Trip Planner</span><span onClick="toggleBottomBoxContent()" id = "toggle"><i class="fa fa-plus-square-o"></i></span>
 		</div>
 		<div class = "bb_content" id="bb_content">
 			<span id = "defaultdisplay">Add cities to your plan!</span>
@@ -582,6 +866,27 @@
 
 </body>
 <script>
+var flag = 1;
+
+function  toggleBottomBoxContent(){
+	flag+=1;
+	if (flag%2==1){
+		document.getElementById("bb_content").style.display = 'none';
+		document.getElementById("toggle").innerHTML = '<i class="fa fa-plus-square-o"></i>';
+		$('body').unbind('touchmove');
+		$('body').removeClass('stop-scrolling')
+	}
+		
+	else
+	{
+		document.getElementById("bb_content").style.display = 'block';
+		document.getElementById("toggle").innerHTML = '<i class="fa fa-minus-square-o"></i>';
+		$('body').bind('touchmove', function(e){e.preventDefault()});
+		$('body').addClass('stop-scrolling')
+	}
+	
+		
+}
 $("li").click(function(){
   showModal(this.innerHTML);
 }); 
@@ -591,23 +896,7 @@ $("#myUL").hover(
 	function(){this.style.display="none";}
 );
 
-var flag = 0;
 
-function  toggleBottomBoxContent(){
-	flag+=1;
-	if (flag%2==1){
-		document.getElementById("bb_content").style.display = 'none';
-		document.getElementById("toggle").innerHTML = '+';
-	}
-		
-	else
-	{
-		document.getElementById("bb_content").style.display = 'block';
-		document.getElementById("toggle").innerHTML = '-';
-	}
-	
-		
-}
 
 
 
@@ -620,7 +909,7 @@ function suggestSearch() {
   ul = document.getElementById("myUL");
   li = ul.getElementsByTagName('li');
 
-  // Loop through all list items, and hide those who don't match the search query
+  //Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     a = li[i];
     txtValue = a.textContent || a.innerText;
@@ -648,7 +937,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+//When the user clicks the button, open the modal 
 function showModal(data) {
   modal.style.display = "block";
   $('#modal_text').html(data);
