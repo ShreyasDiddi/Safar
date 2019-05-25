@@ -1,12 +1,13 @@
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
 	<script src="https:/ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<!--<link rel="stylesheet" href="https:/www.w3schools.com/w3css/4/w3.css">-->
 	<link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https:/fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
 	<title>Safar</title>
-	<style>					
+	<style>			
+	
 		body{
 			position:relative;
 			font-family: 'Oswald', sans-serif;
@@ -16,6 +17,10 @@
 			font-weight: 400;
 			background:#edf1f4;
 			color: #333;
+		}
+		
+		li :hover{
+			pointer:cursor;
 		}
 		
 		.stop-scrolling {
@@ -49,8 +54,6 @@
 			grid-auto-rows:minmax(100px,auto);
 			grid-template-areas:
 			    "header header header header"
-				"header header header header"
-				"header header header header"
 				"header header header header"
 				"header header header header"
 				"section section section section"
@@ -127,7 +130,7 @@
 			grid-row:11/12;
 			grid-column:5/9;
 			
-			background:#3bbced;
+			background:rgb(59,188,237,0.7);
 		}
 		#small_screen_plan_button{
 			display:block;
@@ -270,8 +273,6 @@
 			    "header header header header"
 				"header header header header"
 				"header header header header"
-				"header header header header"
-				"header header header header"
 				"section section section section"
 				"section section section section"
 				"section section section section"
@@ -369,7 +370,7 @@
 		}
 		#header_plan{
 			
-			background:#3bbced;
+			background:rgb(59,188,237,0.7);
 			grid-column:7/12;
 		}
 		#big_screen_planner{
@@ -385,10 +386,10 @@
 		grid-template-columns:repeat(4,1fr);
 		grid-template-rows:repeat(4,1fr);
 		grid-template-areas:
-			"city_1 city_1 city_2 city_3"
-			"city_1 city_1 city_2 city_3"
-			"city_4 city_6 city_5 city_5"
-			"city_4 city_6 city_5 city_5";
+			"city_4 city_4 city_2 city_3"
+			"city_4 city_4 city_2 city_3"
+			"city_1 city_6 city_5 city_5"
+			"city_1 city_6 city_5 city_5";
 		grid-gap:5px;
 	}
 		
@@ -452,11 +453,11 @@
 	
 	#city_3{
 		grid-area:city_3;
-		background : url('https://www.holidify.com/images/compressed/3169.jpg') no-repeat center center; background-size: 100% 100%;;
+		background : url('http://blog.lemontreehotels.com/wp-content/uploads/2018/05/Things-to-Do-in-Chennai-at-Night.jpeg') no-repeat center center; background-size: 100% 100%;;
 	}
 	#city_4{
 		grid-area:city_4;
-		background : url('https://www.thebetterindia.com/wp-content/uploads/2018/03/28685983_10204173290409563_5667113599366070272_o.jpg') no-repeat center center; background-size: 100% 100%;;
+		background : url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbLzkyaX78omlY7MctUkVwazcp8LRwytS4Ez0o3HVrijeML61q') no-repeat center center; background-size: 100% 100%;;
 	}
 	
 	#city_5{
@@ -466,7 +467,7 @@
 	
 	#city_6{
 		grid-area:city_6;
-		background : url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Prestige_Shantiniketan_In_Whitefield_Main_Road.jpg/250px-Prestige_Shantiniketan_In_Whitefield_Main_Road.jpg') no-repeat center center; background-size: 100% 100%;;
+		background : url('https://www.thepaulbangalore.in/images/offers-packages/hideaways-at-karnataka/hideaways_at_karnataka3_paul_bangalore_r3ejyo.jpg') no-repeat center center; background-size: 100% 100%;;
 	}
 	
 	
@@ -494,7 +495,7 @@
 		filter: alpha(opacity=50); 
 	}
 	.zoom:hover {
-		transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 		filter: alpha(opacity=100); 
 	}
 	
@@ -533,7 +534,7 @@
 	}
 	
 	div#bottombox div{
-	padding-left: 10px;
+		padding-left: 10px;
 	
 	}
 	div#bottombox .header{
@@ -679,12 +680,113 @@
 	#main_container > div{
 		height:250px;
 	}
+	
+	
+		.suggestive_textbox{
+			grid-column:1/20;
+		}
+		
+		.myInput {
+			top:10px;
+			color:white;/* Full-width */
+			width:100%;
+			font-size: 16px; /* Increase font-size */
+			padding: 12px 20px 12px 40px; /* Add some padding */
+			border: 1px solid #ddd; /* Add a grey border */
+			margin-top: 12px; /* Add some space below the input */
+			background:grey;
+		}
+	
+		.suggestion_list {
+			/* Remove default list styling */
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			z-index:100;
+			display:none;
+		}
+		
+		
+		.suggestion_list li  {
+			
+			z-index:50;
+			border: 1px solid #ddd; /* Add a border to all links */
+			margin-top: -1px; /* Prevent double borders */
+			background-color: #f6f6f6; /* Grey background color */
+			padding: 12px; /* Add some padding */
+			text-decoration: none; /* Remove default text underline */
+			font-size: 18px; /* Increase the font-size */
+			color: black; /* Add a black text color */
+			display: block; /* Make it into a block element to fill the whole list */
+		}
+		
+		.suggestion_list li:hover:not(.header) {
+			background-color: #eee; /* Add a hover effect to all links, except for headers */
+		}
+		
+		.suggestion_list :hover{
+			display:block;
+		}
+		
+	.chip {
+	
+		display: inline-block;
+		margin:2px;
+		padding: 3px;
+		height: 20px;
+		font-size: 16px;
+		line-height: 20px;
+		border-radius: 20px;
+		align:center;
+		font-weight:bold;
+		background:#edf1f4;
+		color: #333;
+		cursor: pointer;
+	}
+	
+	.closebtn {
+		padding-left: 3px;
+		padding-right:5px;
+		color: #888;
+		font-weight: bold;
+		float: right;
+		font-size: 15px;
+	}
+	
+	.closebtn:hover  {
+		background:red;
+		color:white;
+	}
+		
+	
+	.remove_city{
+		grid-column:20/21;
+		cursor:pointer;
+		height:44px;
+		margin-top:12px;
+	}
+	
+	.remove_city h1{
+		position:relative;
+		bottom:15px;
+		left:30%;
+		right:30%;
+
+	}
+	#cities_container{
+		width:100%;
+		display:grid;
+		grid-template-columns:repeat(20,1fr);
+	}
+	#cities_add{
+		margin-top:10px;
+	}
 	</style>
 </head>
 <body>
 	<div class='headerRibbon'>
 		<div id = "logo">
-			<img src="https:/cdn.staticaly.com/gh/ShreyasDiddi/ShreyasDiddi.github.io/6a6ced4b/images/logo.svg" alt="Safar."id="img_logo"></img>
+			<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/3a14bd8e/images/logo.svg" alt="Safar."id="img_logo"></img>
 			<span id = "small_screen_nav_button" onclick="$('#nav').toggle();$('#search_icon').toggle();"><i style="font-size:24px" class="fa">&#xf03a;</i></span>
 			<div id = "small_screen_nav">
 			<ul id="nav">
@@ -728,7 +830,11 @@
 				</div>
 				<div id="header_plan">
 					<div id="big_screen_planner">
-					
+						<form>
+							<div id = "cities_container">
+							</div>
+							<span id = "cities_add" class = 'chip'>Add city.. <span class="closebtn"><i class="fa fa-plus-square"></i></span></span>
+						</form>
 					</div>
 					<div id="small_screen_plan_button" onClick="toggleBottomBoxContent()">
 					<strong>Plan your Trip</strong>
@@ -780,7 +886,7 @@
 				</div>
 				<div id = "city_6" class = "main_content zoom">
 					<div class = "city_name">
-						<span>6</span><h3>Banglore</h3>				
+						<span>6</span><h3>Bangalore</h3>				
 					</div>
 					<div class = "add_to_plan">
 					
@@ -961,5 +1067,88 @@ window.onclick = function(event) {
 }
 
 //end model
+
+
+
+
+
+//side planner js
+
+var cities_json = [{"id": 1, "name": "Hyderabad"}, {"id": 3, "name": "Chennai"}, {"id": 8, "name": "Mumbai"}, {"id": 2, "name": "Mysore"}, {"id": 4, "name": "Varanasi"}, {"id": 7, "name": "Agra"}, {"id": 6, "name": "Bangalore"}, {"id": 5, "name": "Kolkata"}, {"id": 10, "name": "Delhi"}, {"id": 9, "name": "Jaipur"}]
+
+var cities_sel = {};
+for (var i =0;i<cities_json.length;i++){
+	cities_sel[cities_json[i]["id"]] = {1:false,2:cities_json[i]["name"]};
+}
+
+$(".suggestion_list").hover(
+	function(){this.style.display="block";},
+	function(){this.style.display="none";}
+);
+
+$(".suggestion_list").hover(
+	function(){this.style.display="block";},
+	function(){this.style.display="none";}
+);
+
+function updateList(obj){
+	if (obj.attr('id')!=0){
+		cities_sel[obj.attr('id')][1]=false;
+	}
+	var lis = '';
+	for (i in cities_sel){
+		console.log(i+" "+cities_sel[i][1]);
+		if(cities_sel[i][1]==false && i<7)
+		lis+="<li class = 'cities_list' id = '"+i+"'>"+cities_sel[i][2]+"</li>";
+	}
+	obj.html(lis);
+}
+var cities = 0;
+$(document).on("click","li.cities_list",function(){if($(this).parent().attr('id')!=0)cities_sel[$(this).parent().attr('id')][1]=false;$(this).parent().prev().val($(this).html());$(this).parent().toggle();$(this).parent().prev().addClass('uneditable');cities_sel[$(this).attr('id')][1]=true;$(this).parent().attr('id',$(this).attr('id'));});
+$(document).on("click",".myInput",function(){updateList($(this).next());$(this).next().toggle();});
+$(document).on("keyup",".myInput",function(){$(this).next().show();suggestSearch(this.parentNode);});
+$(document).on("blur",".myInput",function(){if($(this).next().attr('id')!=0)cities_sel[$(this).next().attr('id')][1]=true;else{}});
+$(document).on("click",".remove_city",function(){if($(this).prev().find('ul').attr('id')!=0)cities_sel[$(this).prev().find('ul').attr('id')][1]=false;$(this).prev().remove();$(this).remove();cities--;});
+$('#cities_add').click(function(){
+							if (cities ==6){
+								alert('Max Cities added!');
+								return;
+							}
+							var lis = '';
+							var opening_c = '<div class = "suggestive_textbox"><input type="text" class="myInput" placeholder="Search for cities.."  padding-right="100px"/><ul   id="0" class = "suggestion_list">';
+							var closing_c = '</ul></div><span class = "closebtn remove_city"><h1>&times;</h1></span>';
+							
+							
+							for (i in cities_sel){
+								if(cities_sel[i][1]==false && i<7)
+								lis+="<li class = 'cities_list' id = '"+i+"'>"+cities_sel[i][2]+"</li>";
+							}
+							$('#cities_container').append(opening_c+lis+closing_c);cities+=1;
+						
+						}
+					  );
+function suggestionOnFocus(t){
+	t.parentNode.getElementsByTagName("ul")[0].style.display='block'
+}
+function suggestSearch(item) {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = item.getElementsByClassName('myInput')[0];
+  filter = input.value.toUpperCase();
+  ul = item.getElementsByClassName("suggestion_list")[0];
+  li = ul.getElementsByTagName("li");
+
+  //Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+//end of side planner js
 </script>
 </html>
