@@ -37,7 +37,7 @@
 		#search_icon{
 			position:absolute;
 			right:5px;
-			top:120px;
+			top:100px;
 		}
 		
 		.hoverCursor:hover
@@ -260,6 +260,7 @@
 			
 		}
 		#search_icon{
+
 			position:absolute;
 			top:20px;
 			right:17.8%;
@@ -525,7 +526,15 @@
 	}
 	
 	
-	
+	.myInput_bb {
+		top:10px;
+		width:90%;
+		font-size: 16px; /* Increase font-size */
+		padding: 12px 20px 12px 40px; /* Add some padding */
+		border: 1px solid #ddd; /* Add a grey border */
+		margin-top: 5px; /* Add some space below the input */
+		background:white;
+	}
 	
 	div.bb_content{
 		margin:30px auto;
@@ -534,7 +543,9 @@
 	}
 	
 	div#bottombox div{
-		padding-left: 10px;
+		padding-left: 5px;
+		padding-right:5px;
+		
 	
 	}
 	div#bottombox .header{
@@ -728,6 +739,8 @@
 			display:block;
 		}
 		
+		
+		
 	.chip {
 	
 		display: inline-block;
@@ -781,9 +794,12 @@
 	#cities_add{
 		margin-top:10px;
 	}
+	#selectedCitiesChipsHolder{
+		width:95%;
+	}
 	</style>
 </head>
-<body>
+<body id="body">
 	<div class='headerRibbon'>
 		<div id = "logo">
 			<img src="https://cdn.statically.io/gh/ShreyasDiddi/ShreyasDiddi.github.io/3a14bd8e/images/logo.svg" alt="Safar."id="img_logo"></img>
@@ -796,16 +812,9 @@
 			</div>
 		</div>
 		<div id = "searchbox">
-			<input type="text" id="myInput"  onkeyup="suggestSearch()" placeholder="Search for cities.." onfocus="$('#myUL').show()"  padding-right="100px">
+			<input type="text" id="myInput"  onkeyup="suggestSearchHeadCities()" placeholder="Search for cities.."  padding-right="100px">
 			<svg id="search_icon"  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http:/www.w3.org/2000/svg" viewBox="0 0 512 512" class="o-15 absolute center-v right-1 pe-none svg-inline--fa fa-search fa-w-16 fa-fw fa-lg"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" class="" ></path></svg>
 			<ul id = "myUL"   >
-				<li>Adele	</li>
-				<li>Agnes		</li>
-				<li>Billy		</li>
-				<li>Bob			</li>
-				<li>Calvin		</li>
-				<li>Christina	</li>
-				<li>Cindy		</li>
 			</ul> 
 			
 		</div>
@@ -954,7 +963,14 @@
 		<div class="header"><span id="bb_tp">Trip Planner</span><span onClick="toggleBottomBoxContent()" id = "toggle"><i class="fa fa-plus-square-o"></i></span>
 		</div>
 		<div class = "bb_content" id="bb_content">
-			<span id = "defaultdisplay">Add cities to your plan!</span>
+			
+			<div id = "selectedCitiesChipsHolder"></div>
+			<br/>
+			<div id = "suggestionSearch_bb">
+				
+			</div>
+			<span id = "cities_add_bb" class = 'chip'>Add city.. <span class="closebtn"><i class="fa fa-plus-square"></i></span></span>
+			
 		</div>
 	</div>
 
@@ -973,13 +989,23 @@
 </body>
 <script>
 var flag = 1;
-
+var cities_json = [{"id": 1, "name": "Hyderabad"}, {"id": 3, "name": "Chennai"}, {"id": 8, "name": "Mumbai"}, {"id": 2, "name": "Mysore"}, {"id": 4, "name": "Varanasi"}, {"id": 7, "name": "Agra"}, {"id": 6, "name": "Bangalore"}, {"id": 5, "name": "Kolkata"}, {"id": 10, "name": "Delhi"}, {"id": 9, "name": "Jaipur"}]
+function updateHeaderSearchCities(){
+	var liHTML = "";
+	for (var i in cities_json){
+		liHTML+='<li id = "'+ cities_json[i]["id"]+'">'+cities_json[i]["name"]+'</li>';
+	}
+	$('#myUL').html(liHTML);
+}
+updateHeaderSearchCities();
 function  toggleBottomBoxContent(){
 	flag+=1;
 	if (flag%2==1){
 		document.getElementById("bb_content").style.display = 'none';
 		document.getElementById("toggle").innerHTML = '<i class="fa fa-plus-square-o"></i>';
 		$('body').unbind('touchmove');
+		document.body.scrollTop = 0; // For Safari
+		document.getElementById("body").scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		$('body').removeClass('stop-scrolling')
 	}
 		
@@ -988,13 +1014,16 @@ function  toggleBottomBoxContent(){
 		document.getElementById("bb_content").style.display = 'block';
 		document.getElementById("toggle").innerHTML = '<i class="fa fa-minus-square-o"></i>';
 		$('body').bind('touchmove', function(e){e.preventDefault()});
+		document.body.scrollTop = 0; // For Safari
+		document.getElementById("body").scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		$('body').addClass('stop-scrolling')
 	}
 	
 		
 }
 $("li").click(function(){
-  showModal(this.innerHTML);
+	$("#myInput").val("");
+	showModal(this.innerHTML);
 }); 
 
 $("#myUL").hover(
@@ -1003,10 +1032,10 @@ $("#myUL").hover(
 );
 
 
+$("#myInput").click(function(){$("#myUL").toggle()});
 
 
-
-function suggestSearch() {
+function suggestSearchHeadCities() {
 	$("#myUL").show();
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
@@ -1074,8 +1103,6 @@ window.onclick = function(event) {
 
 //side planner js
 
-var cities_json = [{"id": 1, "name": "Hyderabad"}, {"id": 3, "name": "Chennai"}, {"id": 8, "name": "Mumbai"}, {"id": 2, "name": "Mysore"}, {"id": 4, "name": "Varanasi"}, {"id": 7, "name": "Agra"}, {"id": 6, "name": "Bangalore"}, {"id": 5, "name": "Kolkata"}, {"id": 10, "name": "Delhi"}, {"id": 9, "name": "Jaipur"}]
-
 var cities_sel = {};
 for (var i =0;i<cities_json.length;i++){
 	cities_sel[cities_json[i]["id"]] = {1:false,2:cities_json[i]["name"]};
@@ -1104,11 +1131,11 @@ function updateList(obj){
 	obj.html(lis);
 }
 var cities = 0;
-$(document).on("click","li.cities_list",function(){if($(this).parent().attr('id')!=0)cities_sel[$(this).parent().attr('id')][1]=false;$(this).parent().prev().val($(this).html());$(this).parent().toggle();$(this).parent().prev().addClass('uneditable');cities_sel[$(this).attr('id')][1]=true;$(this).parent().attr('id',$(this).attr('id'));});
-$(document).on("click",".myInput",function(){updateList($(this).next());$(this).next().toggle();});
+$(document).on("click","li.cities_list",function(){if($(this).parent().attr('id')!=0)cities_sel[$(this).parent().attr('id')][1]=false;$(this).parent().prev().val($(this).html());$(this).parent().toggle();$(this).parent().prev().addClass('uneditable');cities_sel[$(this).attr('id')][1]=true;$(this).parent().attr('id',$(this).attr('id'));updateBottomElements();});
+$(document).on("click",".myInput",function(){updateList($(this).next());$(this).next().toggle();updateBottomElements();});
 $(document).on("keyup",".myInput",function(){$(this).next().show();suggestSearch(this.parentNode);});
 $(document).on("blur",".myInput",function(){if($(this).next().attr('id')!=0)cities_sel[$(this).next().attr('id')][1]=true;else{}});
-$(document).on("click",".remove_city",function(){if($(this).prev().find('ul').attr('id')!=0)cities_sel[$(this).prev().find('ul').attr('id')][1]=false;$(this).prev().remove();$(this).remove();cities--;});
+$(document).on("click",".remove_city",function(){if($(this).prev().find('ul').attr('id')!=0)cities_sel[$(this).prev().find('ul').attr('id')][1]=false;$(this).prev().remove();$(this).remove();cities--;updateBottomElements();});
 $('#cities_add').click(function(){
 							if (cities ==6){
 								alert('Max Cities added!');
@@ -1138,7 +1165,6 @@ function suggestSearch(item) {
   ul = item.getElementsByClassName("suggestion_list")[0];
   li = ul.getElementsByTagName("li");
 
-  //Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     a = li[i];
     txtValue = a.textContent || a.innerText;
@@ -1150,5 +1176,95 @@ function suggestSearch(item) {
   }
 }
 //end of side planner js
+
+function suggestSearch_bb(item) {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = item.getElementsByClassName('myInput_bb')[0];
+  filter = input.value.toUpperCase();
+  ul = item.getElementsByTagName("ul")[0];
+  li = ul.getElementsByTagName("li");
+
+  //Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+
+//============================================++++++ Syncing bottom box and side plan ++++++============================================\\
+
+function updateBottomElements(){
+
+	var opening = "<div class = 'chip' cid = '" 
+	var mid = "'>"
+	var closing = "<span class='closebtn bottomChips'>&times;</span></div>";
+	
+	var cities_sel_chips = '';
+	for (var i in cities_sel){
+		if(cities_sel[i][1]==true)
+			cities_sel_chips += opening + i + mid + cities_sel[i][2] + closing;
+	}
+	$('#selectedCitiesChipsHolder').html(cities_sel_chips);
+}
+updateBottomElements();
+$(document).on("click" , ".bottomChips" , function(){
+											cities_sel[$(this).parent().attr('cid')][1] = false;
+											updateBottomElements();
+											$('ul[id = "'+$(this).parent().attr('cid') +'"]').parent().next().remove();
+											$('ul[id = "'+$(this).parent().attr('cid') +'"]').parent().remove();
+											cities-=1;
+										   });
+function updateList_bb(obj){
+	if (obj.attr('id')!=0){
+		cities_sel[obj.attr('id')][1]=false;
+	}
+	var lis = '';
+	for (i in cities_sel){
+		if(cities_sel[i][1]==false && i<7)
+		lis+="<li class = 'cities_list_bb' id = '"+i+"'>"+cities_sel[i][2]+"</li>";
+	}
+	obj.html(lis);
+}		
+
+function updateHeaderSidePlan(){
+	var lis = '';
+	var opening_c = '<div class = "suggestive_textbox"><input type="text" value="' ;
+	var opening_c2='" class="myInput" placeholder="Search for cities.."  padding-right="100px"/><ul   id="';
+	var closing_c = '" class = "suggestion_list"></ul></div><span class = "closebtn remove_city"><h1>&times;</h1></span>';
+	document.getElementById("cities_container").innerHTML="";
+	
+	for (i in cities_sel){
+		if(cities_sel[i][1]==true && i<7){
+			document.getElementById("cities_container").innerHTML+=opening_c+cities_sel[i][2]+opening_c2+i+closing_c;
+			
+		}
+	}
+	
+}	
+
+$(document).on("click",".myInput_bb",function(){updateList_bb($(this).next());$(this).next().toggle();updateBottomElements();});
+$(document).on("keyup",".myInput_bb",function(){$(this).next().show();suggestSearch_bb(this.parentNode);});
+   
+$('#cities_add_bb').click(function(){
+							if (cities ==6){
+								alert('Max Cities added!');
+								return;
+							}
+						
+							$(this).prev().html('<input type="text" class="myInput_bb" placeholder="Search for cities.."  padding-right="100px"/><ul   id="0" class = "suggestion_list"></ul>');
+						}
+					  );
+		  
+$(document).on("click","li.cities_list_bb",function(){if($(this).parent().attr('id')!=0)cities_sel[$(this).parent().attr('id')][1]=false;$(this).parent().prev().val($(this).html());$(this).parent().toggle();$(this).parent().parent().html('');cities+=1;cities_sel[$(this).attr('id')][1]=true;$(this).parent().attr('id',$(this).attr('id'));updateBottomElements();updateHeaderSidePlan();});
+//==========================================+++++ End of Syncing bottom box and side plan +++++==========================================\\
+
 </script>
 </html>
