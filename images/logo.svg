@@ -1,12 +1,12 @@
-<svg width="NaN" height="100" xmlns="http://www.w3.org/2000/svg">
+<svg width="NaN" height="70" xmlns="http://www.w3.org/2000/svg">
 
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="102" width="NaN" y="-1" x="-1"/>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
  </g>
  <g>
   <title>Layer 1</title>
-  <g transform="translate(7,-14) scale(0.75) " id="svg_1" class="logo-container-box logoContainerBox">
+  <g id="svg_1" transform="translate(-20,-16) scale(0.75) " class="logo-container-box logoContainerBox">
    <g transform="scale(1.0936203002929688) translate(-130,-170) " id="svg_2" class="containerBody">
     <g id="svg_3" transform="scale(1) translate(0,0) " class="sampleIconBox">
      <g id="svg_4" fill="#fd802c" transform="scale(1.6666662693023682) translate(265.46673583984375,112.00004577636719) " class="sampleIcons_1">
@@ -33,6 +33,6 @@
     </g>
    </g>
   </g>
-  <text transform="matrix(0.5060634123737587,0,0,1.0609826647895915,3.9808987452342706,-4.4802361427949755) " font-style="italic" font-weight="bold" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Oswald, sans-serif" font-size="29" id="svg_21" y="76.83984" x="45.88986" stroke-width="0.5" fill="#000000">Why Suffer? When Safar's Here!</text>
+  <text font-weight="bold" stroke="#000" transform="matrix(0.4319393890972923,0,0,0.6833845499762532,61.137539457152364,24.185225387793604) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="30" id="svg_21" y="59.84948" x="-68.94051" stroke-width="0" fill="#000000">Why Suffer?When Safar's Here!</text>
  </g>
 </svg>
