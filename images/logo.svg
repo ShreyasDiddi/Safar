@@ -1,8 +1,8 @@
-<svg width="NaN" height="70" xmlns="http://www.w3.org/2000/svg">
+<svg width="NaN" height="80" xmlns="http://www.w3.org/2000/svg">
 
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <rect fill="none" id="canvas_background" height="82" width="NaN" y="-1" x="-1"/>
  </g>
  <g>
   <title>Layer 1</title>
