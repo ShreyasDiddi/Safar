@@ -167,7 +167,7 @@
 			left: 0;
 			top: 0;
 			width: 100%; /* Full width */
-			height: 100%; /* Full height */
+			height: 80%; /* Full height */
 			overflow: auto; /* Enable scroll if needed */
 			background-color: rgb(0,0,0); /* Fallback color */
 			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -179,7 +179,7 @@
 			margin: auto;
 			padding: 20px;
 			border: 1px solid #888;
-			width: 80%;
+			width: 90%;
 			}
 			
 			/* The Close Button */
@@ -188,6 +188,9 @@
 			float: right;
 			font-size: 28px;
 			font-weight: bold;
+			
+			position:absolute;
+			right:6%;
 			}
 			
 			.close:hover,
@@ -197,6 +200,12 @@
 			cursor: pointer;
 			}
 					
+			#modal_text{
+				text-align:justify;
+			}
+			h2{
+				text-align:center;
+			}
 					
 					
 		
@@ -978,9 +987,10 @@
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
+  <span class="close">&times;</span>
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="modal_text">Some text in the Modal..</p>
+    
+    <p id="modal_text">Loading..<br/><img src = "https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></p>
   </div>
 
 </div>
@@ -993,7 +1003,8 @@ var cities_json = [{"id": 1, "name": "Hyderabad"}, {"id": 3, "name": "Chennai"},
 function updateHeaderSearchCities(){
 	var liHTML = "";
 	for (var i in cities_json){
-		liHTML+='<li id = "'+ cities_json[i]["id"]+'">'+cities_json[i]["name"]+'</li>';
+		if (cities_json[i]['id']<7)
+		liHTML+='<li class = "headerSearchList" id = "'+ cities_json[i]["id"]+'">'+cities_json[i]["name"]+'</li>';
 	}
 	$('#myUL').html(liHTML);
 }
@@ -1021,10 +1032,10 @@ function  toggleBottomBoxContent(){
 	
 		
 }
-$("li").click(function(){
+$(document).on('click',".headerSearchList",function(){
 	$("#myInput").val("");
-	showModal(this.innerHTML);
-}); 
+	showModal($(this).attr('id'));
+} );
 
 $("#myUL").hover(
 	function(){this.style.display="block";},
@@ -1073,15 +1084,35 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 //When the user clicks the button, open the modal 
-function showModal(data) {
-  modal.style.display = "block";
-  $('#modal_text').html(data);
+function showModal(cid) {
+   modal.style.display = "block";
   $('#myUL').hide();
+  $.ajax({
+    type: 'GET',
+    url: 'http://35.244.62.0/api/city_desc/'+cid,
+    dataType: 'json',
+    success: function(data) {
+		var desc = data;
+		ex=data;
+		var content = '';
+		content += '<h2 class = "desc_name">'+desc['name']+'</h2>';
+		content += '<p><h3 class ="desc_desc">About & History</h3><hr/>'+desc['description']+'</p>';
+		content += '<p><h3 class ="desc_visits">Tourist Attractions</h3><hr/>'+desc['visit']+'</p><div class = "visits_desc"></div>';
+		if (desc['do'].length>0&&desc['do']!='')
+		content += '<p><h3 class ="desc_do">Don\'t Miss to :</h3><hr/>'+desc['do']+'</p>';
+		content += '<p><h3 class ="desc_eat">Eat :</h3><hr>'+desc['eat']+'</p>';
+		content += '<p><h3 class ="desc_do">Nearby Visits :</h3><hr/>'+desc['cities']+'</p>';
+		
+		$('#modal_text').html(content);
+    }
+  });
+  
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+ $("#modal_text").html('Loading..<br/><img src = "https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif/>');  
 }
 
 
@@ -1090,6 +1121,7 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    $("#modal_text").html('Loading..<br/><img src = "https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/>');
 	
   }
 	
